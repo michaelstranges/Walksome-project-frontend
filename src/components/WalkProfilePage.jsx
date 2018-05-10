@@ -4,7 +4,6 @@ import axios from 'axios';
 
 //map child component
 import WalkMapContainer from './WalkMapContainer.jsx'
-import WalkMapDirections from './WalkMapDirections.jsx'
 import WalkCommentList from './WalkCommentList.jsx'
 
 class WalkProfilePage extends Component {
@@ -42,8 +41,7 @@ class WalkProfilePage extends Component {
               <div ref="map" style={style}>
                 This is the Walk Profile Page
                 <WalkCommentList theComments={this.state.comments} />
-                <WalkMapContainer google={this.props.google} />
-                <WalkMapDirections />
+                <WalkMapContainer />
                 Below
              </div>
           </aside>
