@@ -3,7 +3,7 @@ import '../styles/App.css';
 import axios from 'axios';
 
 //map child component
-import WalkMapContainer from './WalkMapContainer.jsx'
+import MyMapContainer from './WalkMapContainer.jsx'
 import WalkCommentList from './WalkCommentList.jsx'
 import WalkCommentInput from './WalkCommentInput.jsx'
 
@@ -14,6 +14,7 @@ class WalkProfilePage extends Component {
       name: "Spadina",
       description: "an OK walk",
       walk_time: 4,
+      map_coords: [{start: {lat: 43.647986, lng: -79.389184} ,end: {lat: 43.644665, lng: -79.394945} }],
       comments: [
         {name: "John", rating: 4, comment:"it was ok"},
         {name: "Adam", rating: 5, comment:"grand stroll"},
@@ -60,7 +61,7 @@ class WalkProfilePage extends Component {
                       <div className="profile-walk-time">
                         TIME: {this.state.walk_time}
                       </div>
-                      <WalkMapContainer />
+                      <MyMapContainer theRoute={this.state.map_coords} />
                 </div>
                 Below
              </div>

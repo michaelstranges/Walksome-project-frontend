@@ -1,5 +1,5 @@
 .comment-container {
-  border: lightblue 2px solid;
+  border: #339CFF 2px solid;
   background-color: white;
   height: auto;
   width: 260px;
@@ -11,7 +11,7 @@
 .message-user {
   padding-top: 5px;
   padding-left: 5px;
-  background-color: lightblue;
+  background-color: #339CFF;
   width: 255px;
 }
 
@@ -25,7 +25,7 @@
 
 .profile-sidebar {
   border-top-right-radius: 10px;
-  border: lightblue 2px solid;
+  border: #339CFF 2px solid;
 }
 
 .profile-info {
@@ -33,7 +33,7 @@
   left:400px;
   bottom:250px;
   width: 700px;
-  border: lightblue 2px solid;
+  border: #339CFF 2px solid;
   border-radius: 5px;
 }
 
@@ -57,6 +57,6 @@
 
 
 .container-map{
-  border-top: lightblue 2px solid;
-  border-bottom: lightblue 2px solid;
+  border-top: #339CFF 2px solid;
+  border-bottom: #339CFF 2px solid;
 }
