@@ -51,18 +51,28 @@ class WalkProfilePage extends Component {
                 This is the Walk Profile Page
                 <WalkCommentInput _onCommentPost={this._onCommentPost} />
                 <WalkCommentList theComments={this.state.comments} />
-                <div className = "profile-info">
-                  <div className="profile-walk-name">
-                    WALK NAME: {this.state.name}
-                  </div>
-                    <div className="profile-walk-description">
-                      DESCRIPTION: {this.state.description}
+                <div className="additional-profile-info">
+                  <div className = "profile-info">
+                    <div className="profile-walk-name">
+                      WALK NAME: {this.state.name}
                     </div>
-                      <div className="profile-walk-time">
-                        TIME: {this.state.walk_time}
+                      <div className="profile-walk-description">
+                        DESCRIPTION: {this.state.description}
                       </div>
-                      <MyMapContainer theRoute={this.state.map_coords} />
+                        <div className="profile-walk-time">
+                          TIME: {this.state.walk_time}
+                        </div>
+                        <MyMapContainer theRoute={this.state.map_coords} />
+                        <div className="grid-profile-walk-photos">
+                          <div className="grid-photo-item">1</div>
+                          <div className="grid-photo-item">2</div>
+                          <div className="grid-photo-item">3</div>
+                          <div className="grid-photo-item">4</div>
+                          <div className="grid-photo-item">5</div>
+                        </div>
+                  </div>
                 </div>
+
                 Below
              </div>
           </aside>

@@ -55,8 +55,16 @@
   padding-left:5px;
 }
 
-
 .container-map{
   border-top: #339CFF 2px solid;
   border-bottom: #339CFF 2px solid;
+}
+
+.grid-profile-walk-photos{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto
+}
+
+.grid-photo-item{
+  text-align:center;
 }
