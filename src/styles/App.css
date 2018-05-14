@@ -33,3 +33,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.user-profile-info {
+  margin-left:22px
+}
+
+.user-profile-pic {
+  width:250px;
+  length:200px;
+  border: black 1px solid;
+  border-radius: 10px;
+}

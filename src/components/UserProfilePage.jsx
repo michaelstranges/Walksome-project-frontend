@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import axios from 'axios';
+import logo from '../logo.svg';
 
 class UserProfilePage extends Component {
   constructor(props){
@@ -33,11 +34,12 @@ class UserProfilePage extends Component {
     return (
       <div>
         <aside className = "profile-sidebar">
-            <div>
+            <div className="user-profile-info">
               <div>The User Profile Page</div>
-              <div>{this.state.name}</div>
-              <div>{this.state.description}</div>
-              <div>{completedlist}</div>
+              <img src={logo} className="user-profile-pic" alt="logo" />
+              <div className="user-profile-name">{this.state.name}</div>
+              <div className="user-profile-description">{this.state.description}</div>
+              <div className="user-profile-walks">{completedlist}</div>
            </div>
         </aside>
       </div>

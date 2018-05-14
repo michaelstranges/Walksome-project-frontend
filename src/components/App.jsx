@@ -6,6 +6,7 @@ import NavBar from './NavBar.jsx';
 import UserProfilePage from './UserProfilePage.jsx'
 import WalkProfilePage from './WalkProfilePage.jsx'
 
+
 class App extends Component {
   render() {
     return (

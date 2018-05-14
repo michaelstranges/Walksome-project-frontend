@@ -1,0 +1,62 @@
+.comment-container {
+  border: lightblue 2px solid;
+  background-color: white;
+  height: auto;
+  width: 260px;
+  margin-top: 10px;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+.message-user {
+  padding-top: 5px;
+  padding-left: 5px;
+  background-color: lightblue;
+  width: 255px;
+}
+
+.message-content {
+  padding-top: 10px;
+  padding-left: 5px;
+  margin-right: 2px;
+  margin-left: 2px;
+  margin-bottom: 6px;
+}
+
+.profile-sidebar {
+  border-top-right-radius: 10px;
+  border: lightblue 2px solid;
+}
+
+.profile-info {
+  position: fixed;
+  left:400px;
+  bottom:250px;
+  width: 700px;
+  border: lightblue 2px solid;
+  border-radius: 5px;
+}
+
+.profile-walk-name {
+  height:30px;
+  padding-top:5px;
+  padding-left:5px;
+}
+
+.profile-walk-description{
+  height:30px;
+  padding-top:5px;
+  padding-left:5px;
+}
+
+.profile-walk-time{
+  height:30px;
+  padding-top:5px;
+  padding-left:5px;
+}
+
+
+.container-map{
+  border-top: lightblue 2px solid;
+  border-bottom: lightblue 2px solid;
+}

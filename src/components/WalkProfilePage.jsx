@@ -5,6 +5,7 @@ import axios from 'axios';
 //map child component
 import WalkMapContainer from './WalkMapContainer.jsx'
 import WalkCommentList from './WalkCommentList.jsx'
+import WalkCommentInput from './WalkCommentInput.jsx'
 
 class WalkProfilePage extends Component {
   constructor(props){
@@ -21,27 +22,46 @@ class WalkProfilePage extends Component {
     }
   }
 
-/*
+
   componentDidMount(){
-    axios.get('https://walkish.localtunnel.me/routes/api/all')
+    axios.get('http://localhost:8080/routes/api/all')
       .then(function(response){
-        console.log(response.data)
+        console.log(response, "RESPONSE")
     })
   }
-*/
+
+  _onCommentPost = evt => {
+    const newComment = {name: "Test", rating: 4, comment: evt}
+    const comments = this.state.comments.concat(newComment)
+    console.log(this.props)
+    this.setState({comments: comments});
+  }
+
 
   render() {
     const style = { // MUST specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
-      width: '200px', // 90vw basically means take up 90% of the width screen. px also works.
-      height: '200px' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
+      width: '200px',
+      height: '200px'
   }
     return (
       <div>
           <aside className = "profile-sidebar">
               <div ref="map" style={style}>
                 This is the Walk Profile Page
+                <WalkCommentInput _onCommentPost={this._onCommentPost} />
                 <WalkCommentList theComments={this.state.comments} />
-                <WalkMapContainer />
+                <div className = "profile-info">
+                  <div className="profile-walk-name">
+                    WALK NAME: {this.state.name}
+                  </div>
+                    <div className="profile-walk-description">
+                      DESCRIPTION: {this.state.description}
+                    </div>
+                      <div className="profile-walk-time">
+                        TIME: {this.state.walk_time}
+                      </div>
+                      <WalkMapContainer />
+                </div>
                 Below
              </div>
           </aside>

@@ -1,27 +1,86 @@
-import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import React, { Component } from 'react'
+import '../styles/WalkMapContainer.css';
+import { compose, withProps, lifecycle } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, Marker } from "react-google-maps"
+const google = window.google
+//withGoogleMap is a higher order component (HOC)
 
-class Map extends Component {
+
+const WalkMapContainer = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=    &v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div className="container-map" style={{ height: `400px`}} />,
+    mapElement: <div style={{ height: `100%`}} />,
+  }),
+  withScriptjs,
+  withGoogleMap,
+  lifecycle({
+    componentDidMount() {
+      const DirectionsService = new google.maps.DirectionsService();
+      const waypts = [{location: new google.maps.LatLng(43.647986, -79.389184), stopover:false}]; //CHANGE
+
+      DirectionsService.route({
+        origin: new google.maps.LatLng(43.644665, -79.394945), //CHANGE
+        destination: new google.maps.LatLng(43.638182, -79.379837), //CHANGE
+        waypoints: waypts,
+        travelMode: google.maps.TravelMode.WALKING,
+      }, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          this.setState({
+            directions: result,
+          });
+        } else {
+          console.error(`error fetching directions ${result}`);
+        }
+      });
+    }
+  })
+)(props =>
+  <GoogleMap
+    defaultZoom={7}
+    defaultCenter={new google.maps.LatLng(43.644665, -79.394945)} //CHANGE
+  >
+    <Marker position={{ lat: 43.647986, lng: -79.389184 }}></Marker>
+    <Marker position={{ lat: 43.647986, lng: -79.379837 }}></Marker>
+
+    {console.log("PROPS--->", props)}
+    {props.directions && <DirectionsRenderer directions={props.directions} options={{draggable:true}} />}
+    {console.log("POST PROPS--->", props)}
+    <button onClick={this.testButton}>HERE</button>
+  </GoogleMap>
+);
+
+class MyMapContainer extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+    }
+  }
+
+  componentDidMount(){
+    console.log("INNER CDM")
+  }
+
+  getMyDirections = evt => {
+    console.log(evt)
+  }
+
+  handleMapClick = () => {
+    console.log("this is the event")
+  }
+
+//SEND THE PROPS BELOW IN THE RETURN! RECALL FLOW
+
   render(){
-
-    const GoogleMapExample = withGoogleMap(props => (
-      <GoogleMap
-        defaultCenter = { { lat: 43.6532, lng: -79.3832 } }
-        defaultZoom = { 13 }
-        >
-        </GoogleMap>
-      ))
-
-
+    console.log("BEFORE the Render")
     return(
       <div>
-        <GoogleMapExample
-          containerElement={ <div style={{ height: '500px', width: '500px'}} /> }
-          mapElement={ <div style={{ height: '100%' }} /> }
-       />
+        <WalkMapContainer />
+        <button onClick={this.handleMapClick}>Save!!!</button>
       </div>
-    );
+    )
   }
-};
+}
 
-export default Map;
+export default MyMapContainer;
