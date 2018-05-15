@@ -18,7 +18,7 @@ const WalkMapContainer = compose(
     componentDidMount() {
 // Directions Creation - Start, End, Waypoints
       const DirectionsService = new google.maps.DirectionsService();
-      const waypts = [{location: new google.maps.LatLng(43.647986, -79.389184), stopover:false}]; //CHANGE
+      const waypts = [{location: new google.maps.LatLng(43.647986, -79.389184), stopover:false}, {location: new google.maps.LatLng(43.647986, -79.669184), stopover:false}]; //CHANGE
 
       DirectionsService.route({
         origin: new google.maps.LatLng(this.props.theNewRoute[0].start.lat, this.props.theNewRoute[0].start.lng), //CHANGE

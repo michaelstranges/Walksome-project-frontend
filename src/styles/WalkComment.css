@@ -24,8 +24,11 @@
 }
 
 .profile-sidebar {
+  background-color: lavender;
   border-top-right-radius: 10px;
   border: #339CFF 2px solid;
+  width: 300px;
+  height: 800px;
 }
 
 .profile-info {

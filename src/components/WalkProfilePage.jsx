@@ -29,43 +29,61 @@ class WalkProfilePage extends Component {
     const theSite = this.state.site_id //establishes the curent site
     axios.get(`http://localhost:8080/routes/api/${this.state.site_id}`)
     .then(function(response){
+      const stateComments = this.state.comments;
       const comments_db = response.data[theSite].comments //cleaning up code
-      const updatedComments = comments_db.map(content => {
-        //Below pulls commenter name and comment from the object coming from db
-        let commenter_name = Object.keys(content)[0]
-        let commenter_comment = content[commenter_name][0]
-        //Below sets commentInDb to the new comment in correct format
-        let commentInDb = {name: commenter_name, rating: null, comment: commenter_comment }
-        //Below current comments in the db
-        const currentComments = this.state.comments
-        //Below the new comment into the current comments to update
-        const updateComments  = currentComments.concat(commentInDb)
-        //Below returns the updated comments out of the loop to update state later
-        return updateComments
-      })
+      const dbPackage = [];  //need a blank array to build my comments
 
-      console.log("updated comments ==> ", updatedComments)
-
-      //recall .map returns and array.  Had an array in an array issue.  use updatedComments[0]
+      for (const content in comments_db) {
+        //get the commenter name from the db response
+        let commenter_name = Object.keys(comments_db[content])
+        //get the comment from the db response using the commenter name
+        let commenter_comment = comments_db[content][commenter_name]
+        //puts the comment into the correct formate
+        let commentInDb = {name: commenter_name[0], rating: null, comment: commenter_comment[0] }
+        //builds the database comment package
+        dbPackage.push(commentInDb)
+      }
+      //compiles the comment package, concatenating the built package to the current state pack
+      const compileComments = stateComments.concat(dbPackage)
 
       this.setState({
         name: response.data[theSite].name,
         description: response.data[theSite].description,
         walk_time: response.data[theSite].walk_time,
-        comments: updatedComments[0]
+        comments: compileComments
       })
 
     }.bind(this))
     .catch(function(error){
-      console.log("ERROR ==>", error);
+      console.log("GET ERROR ==>", error);
     })
   }
 
   _onCommentPost = evt => {
-    const newComment = {name: "Test", rating: 4, comment: evt}
+    const newComment = {name: "Test", rating: 4, comment: evt} //THE CURRENT SIGNED IN USER
     const comments = this.state.comments.concat(newComment)
     console.log(this.props)
     this.setState({comments: comments});
+/*
+    const server = axios.create({
+       timeout: 10000,
+       headers: {
+     'Content-Type': 'application/json;charset=UTF-8'
+     }
+    })
+*/
+    axios.post(`http://localhost:8080/routes/api/${this.state.site_id}/comment/new`, {
+        comment: evt,
+        route_id: `${this.state.site_id}`,
+        user_id: 1
+      })
+      .then(function(response){
+        console.log("successfully commented)")
+        console.log("post response ==>", response)
+      })
+      .catch(function(error){
+        console.log("POST ERROR ==>", error);
+      })
   }
 
 
