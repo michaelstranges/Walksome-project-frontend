@@ -15,7 +15,7 @@ class App extends Component {
           <Router>
             <div>
               <Route exact path="/" component={UserProfilePage} />
-              <Route path="/walk" component={WalkProfilePage} />
+              <Route path="/walk/:id" component={WalkProfilePage} />
             </div>
           </Router>
       </div>

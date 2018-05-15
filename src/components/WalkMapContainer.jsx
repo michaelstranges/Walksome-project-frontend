@@ -7,7 +7,7 @@ const google = window.google
 
 const WalkMapContainer = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key= --- &v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAgI-8-W-pU3AW5bBZp0gxO5vqMZMrYy_M&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div className="container-map" style={{ height: `400px`}} />,
     mapElement: <div style={{ height: `100%`}} />,

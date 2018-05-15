@@ -11,6 +11,7 @@ class WalkProfilePage extends Component {
   constructor(props){
     super(props);
     this.state = {
+      site_id: this.props.match.params.id, //set site-id to params.id, use later in code for routing
       name: "Spadina",
       description: "an OK walk",
       walk_time: 4,
@@ -25,9 +26,38 @@ class WalkProfilePage extends Component {
 
 
   componentDidMount(){
-    axios.get('http://localhost:8080/routes/api/all')
-      .then(function(response){
-        console.log(response, "RESPONSE")
+    const theSite = this.state.site_id //establishes the curent site
+    axios.get(`http://localhost:8080/routes/api/${this.state.site_id}`)
+    .then(function(response){
+      const comments_db = response.data[theSite].comments //cleaning up code
+      const updatedComments = comments_db.map(content => {
+        //Below pulls commenter name and comment from the object coming from db
+        let commenter_name = Object.keys(content)[0]
+        let commenter_comment = content[commenter_name][0]
+        //Below sets commentInDb to the new comment in correct format
+        let commentInDb = {name: commenter_name, rating: null, comment: commenter_comment }
+        //Below current comments in the db
+        const currentComments = this.state.comments
+        //Below the new comment into the current comments to update
+        const updateComments  = currentComments.concat(commentInDb)
+        //Below returns the updated comments out of the loop to update state later
+        return updateComments
+      })
+
+      console.log("updated comments ==> ", updatedComments)
+
+      //recall .map returns and array.  Had an array in an array issue.  use updatedComments[0]
+
+      this.setState({
+        name: response.data[theSite].name,
+        description: response.data[theSite].description,
+        walk_time: response.data[theSite].walk_time,
+        comments: updatedComments[0]
+      })
+
+    }.bind(this))
+    .catch(function(error){
+      console.log("ERROR ==>", error);
     })
   }
 
@@ -64,11 +94,11 @@ class WalkProfilePage extends Component {
                         </div>
                         <MyMapContainer theRoute={this.state.map_coords} />
                         <div className="grid-profile-walk-photos">
-                          <div className="grid-photo-item">1</div>
-                          <div className="grid-photo-item">2</div>
-                          <div className="grid-photo-item">3</div>
-                          <div className="grid-photo-item">4</div>
-                          <div className="grid-photo-item">5</div>
+                          <div className="grid-photo-item">photo1</div>
+                          <div className="grid-photo-item">photo2</div>
+                          <div className="grid-photo-item">photo3</div>
+                          <div className="grid-photo-item">photo4</div>
+                          <div className="grid-photo-item">photo5</div>
                         </div>
                   </div>
                 </div>
