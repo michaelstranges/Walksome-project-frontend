@@ -16,7 +16,7 @@ class WalkProfilePage extends Component {
       name: "Spadina",
       description: "an OK walk",
       walk_time: 4,
-      map_coords: [{start: {lat: 43.647986, lng: -79.389184} ,end: {lat: 43.644665, lng: -79.394945} }],
+      map_coords: [{start: {lat: 43.638229, lng: -79.3797}, end: {lat: 43.638229, lng: -79.3797}}],
       comments: [] //made empty so that I could just concat to an empty array
     }
   }
@@ -27,9 +27,10 @@ class WalkProfilePage extends Component {
     axios.get(`http://localhost:8080/routes/api/${this.state.site_id}`)
     .then(function(response){
       const stateComments = this.state.comments;
+      const stateMapCoords = this.state.map_coords;
       const comments_db = response.data[theSite].comments //cleaning up code
       const dbPackage = [];  //need a blank array to build my comments
-
+//GET COMMENTS
       for (const content in comments_db) {
         //get the commenter name from the db response
         let commenter_name = Object.keys(comments_db[content])
@@ -42,13 +43,23 @@ class WalkProfilePage extends Component {
       }
       //compiles the comment package, concatenating the built package to the current state pack
       const compileComments = stateComments.concat(dbPackage)
+//GET MAPS
+      //const start_lng = response.data[theSite].starts[0]
+      //const start_lat = response.data[theSite].starts[1]
+      //const end_lng = response.data[theSite].ends[0]
+      //const end_lat = response.data[theSite].ends[1]
 
+      const db_map = [
+        {start: {lat: response.data[theSite].starts[1], lng: response.data[theSite].starts[0]},
+        end: {lat: response.data[theSite].ends[1], lng: response.data[theSite].ends[0]}}
+      ]
 
       this.setState({
         name: response.data[theSite].name,
         description: response.data[theSite].description,
         walk_time: response.data[theSite].walk_time,
-        comments: compileComments
+        comments: compileComments,
+        map_coords: db_map
       })
 
     }.bind(this))
@@ -117,7 +128,6 @@ class WalkProfilePage extends Component {
                         </div>
                   </div>
                 </div>
-
                 Below
              </div>
           </aside>

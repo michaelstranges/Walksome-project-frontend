@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
 
 class WalkCommentInput extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      clearBox: ""
+    }
+  }
 
   onCommentPost = (evt) => {
     if(evt.key === "Enter"){
       this.props._onCommentPost(evt.target.value)
+      evt.target.value =""
+
     }
   }
 
