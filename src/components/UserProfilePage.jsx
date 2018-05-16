@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import axios from 'axios';
 import logo from '../logo.svg';
+import MyMapContainer from './WalkMapContainer.jsx'
 
 class UserProfilePage extends Component {
   constructor(props){
@@ -16,20 +17,6 @@ class UserProfilePage extends Component {
 //.map doesn't seem to be able to break.  But the concept is in place.
 //maybe try a for-loop.
   render() {
-  let i = 0;
-  const completedlist = this.state.completed.map((route_names) => {
-    i++;
-    if (this.state.completed.length > 4) {
-        if ( i < 4){
-          console.log("AAAA", i)
-            return (<div> {route_names}  </div>)
-        } else {
-          console.log("BBBB", i)
-            return (<div> {route_names} and {this.state.completed.length - 4} others </div>)
-
-        }
-    }
-  })
 
     return (
       <div>
@@ -39,7 +26,11 @@ class UserProfilePage extends Component {
               <img src={logo} className="user-profile-pic" alt="logo" />
               <div className="user-profile-name">{this.state.name}</div>
               <div className="user-profile-description">{this.state.description}</div>
-              <div className="user-profile-walks">{completedlist}</div>
+              <div className="additional-profile-info">
+                <div className = "profile-info">
+                  THE COLLECTION OF MAPS
+                </div>
+              </div>
            </div>
         </aside>
       </div>

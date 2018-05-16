@@ -44,11 +44,6 @@ class WalkProfilePage extends Component {
       //compiles the comment package, concatenating the built package to the current state pack
       const compileComments = stateComments.concat(dbPackage)
 //GET MAPS
-      //const start_lng = response.data[theSite].starts[0]
-      //const start_lat = response.data[theSite].starts[1]
-      //const end_lng = response.data[theSite].ends[0]
-      //const end_lat = response.data[theSite].ends[1]
-
       const db_map = [
         {start: {lat: response.data[theSite].starts[1], lng: response.data[theSite].starts[0]},
         end: {lat: response.data[theSite].ends[1], lng: response.data[theSite].ends[0]}}
