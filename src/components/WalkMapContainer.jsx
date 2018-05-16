@@ -21,6 +21,8 @@ const WalkMapContainer = compose(
       //const waypts = [{location: new google.maps.LatLng(43.647986, -79.389184), stopover:false}, {location: new google.maps.LatLng(43.647986, -79.669184), stopover:false}]; //CHANGE
       const waypts = []
 
+      console.log("theNewRoute ==>", this.props.theNewRoute[0] )
+
       DirectionsService.route({
         origin: new google.maps.LatLng(this.props.theNewRoute[0].start.lat, this.props.theNewRoute[0].start.lng), //CHANGE
         destination: new google.maps.LatLng(this.props.theNewRoute[0].end.lat, this.props.theNewRoute[0].end.lng), //CHANGE
@@ -33,6 +35,7 @@ const WalkMapContainer = compose(
           });
         } else {
           console.error(`error fetching directions ${result}`);
+          console.log(result)
         }
       });
     }

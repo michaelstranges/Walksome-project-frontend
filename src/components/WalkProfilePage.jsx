@@ -45,9 +45,11 @@ class WalkProfilePage extends Component {
       const compileComments = stateComments.concat(dbPackage)
 //GET MAPS
       const db_map = [
-        {start: {lat: response.data[theSite].starts[1], lng: response.data[theSite].starts[0]},
-        end: {lat: response.data[theSite].ends[1], lng: response.data[theSite].ends[0]}}
+        {start: {lat: response.data[theSite].starts[0], lng: response.data[theSite].starts[1]},
+        end: {lat: response.data[theSite].ends[0], lng: response.data[theSite].ends[1]}}
       ]
+
+      console.log(db_map)
 
       this.setState({
         name: response.data[theSite].name,
