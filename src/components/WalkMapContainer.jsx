@@ -45,13 +45,18 @@ const WalkMapContainer = compose(
     defaultZoom={7}
     defaultCenter={new google.maps.LatLng(43.644665, -79.394945)} //CHANGE
   >
-    <Marker position={{ lat: 43.647986, lng: -79.389184 }}></Marker>
-    <Marker position={{ lat: 43.647986, lng: -79.379837 }}></Marker>
+    {console.log("PROPS---> Markers?", props)}
+    {console.log("props.theNewMarkers ---> ", props.theNewMarkers)}
+    {console.log("props.theNewMarkers ---> ", props.theNewMarkers[0].lat)}
 
-    {console.log("PROPS--->", props)}
+
+    <Marker position={{ lat: props.theNewMarkers[0].lat, lng: props.theNewMarkers[0].lng }}></Marker>
+
+
     {props.directions && <DirectionsRenderer directions={props.directions} options={{draggable:true}} />}
+
     {console.log("POST PROPS--->", props)}
-    <button onClick={this.testButton}>HERE</button>
+
   </GoogleMap>
 );
 
@@ -83,7 +88,7 @@ class MyMapContainer extends Component {
     console.log("BEFORE the Render")
     return(
       <div>
-        <WalkMapContainer theNewRoute={this.props.theRoute} />
+        <WalkMapContainer theNewRoute={this.props.theRoute} theNewMarkers={this.props.theMarkers}/>
         <button onClick={this.handleMapClick}>Save!!!</button>
       </div>
     )

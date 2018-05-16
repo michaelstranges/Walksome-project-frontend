@@ -17,7 +17,8 @@ class WalkProfilePage extends Component {
       description: "an OK walk",
       walk_time: 4,
       map_coords: [{start: {lat: 43.638229, lng: -79.3797}, end: {lat: 43.638229, lng: -79.3797}}],
-      comments: [] //made empty so that I could just concat to an empty array
+      comments: [], //made empty so that I could just concat to an empty array
+      map_markers: [{lat: 43.642263, lng: -79.384241}]
     }
   }
 
@@ -115,7 +116,7 @@ class WalkProfilePage extends Component {
                         <div className="profile-walk-time">
                           TIME: {this.state.walk_time}
                         </div>
-                        <MyMapContainer theRoute={this.state.map_coords} />
+                        <MyMapContainer theRoute={this.state.map_coords} theMarkers={this.state.map_markers} />
                         <div className="grid-profile-walk-photos">
                           <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
                           <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
