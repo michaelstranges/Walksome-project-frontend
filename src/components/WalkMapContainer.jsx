@@ -46,6 +46,7 @@ const WalkMapContainer = compose(
 
     {console.log("PROPS--->", props)}
     {props.directions && <DirectionsRenderer directions={props.directions} options={{draggable:true}} />}
+    {props.directions && <DirectionsRenderer directions={props.directions} options={{draggable:true}} />}
     {console.log("POST PROPS--->", props)}
     <button onClick={this.testButton}>HERE</button>
   </GoogleMap>

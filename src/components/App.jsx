@@ -5,6 +5,7 @@ import '../styles/App.css';
 import NavBar from './NavBar.jsx';
 import UserProfilePage from './UserProfilePage.jsx'
 import WalkProfilePage from './WalkProfilePage.jsx'
+import VisitorHomePage from './VisitorHomePage.jsx'
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
             <div>
               <Route exact path="/" component={UserProfilePage} />
               <Route path="/walk/:id" component={WalkProfilePage} />
+              <Route path="/home" component={VisitorHomePage} />
             </div>
           </Router>
       </div>
