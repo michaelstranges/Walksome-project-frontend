@@ -6,6 +6,7 @@ import axios from 'axios';
 import MyMapContainer from './WalkMapContainer.jsx'
 import WalkCommentList from './WalkCommentList.jsx'
 import WalkCommentInput from './WalkCommentInput.jsx'
+import logo from '../logo.svg';
 
 class WalkProfilePage extends Component {
   constructor(props){
@@ -16,11 +17,7 @@ class WalkProfilePage extends Component {
       description: "an OK walk",
       walk_time: 4,
       map_coords: [{start: {lat: 43.647986, lng: -79.389184} ,end: {lat: 43.644665, lng: -79.394945} }],
-      comments: [
-        {name: "John", rating: 4, comment:"it was ok"},
-        {name: "Adam", rating: 5, comment:"grand stroll"},
-        {name: "Matt", rating: 4.5, comment: "cool beans"}
-      ]
+      comments: [] //made empty so that I could just concat to an empty array
     }
   }
 
@@ -46,6 +43,7 @@ class WalkProfilePage extends Component {
       //compiles the comment package, concatenating the built package to the current state pack
       const compileComments = stateComments.concat(dbPackage)
 
+
       this.setState({
         name: response.data[theSite].name,
         description: response.data[theSite].description,
@@ -60,8 +58,8 @@ class WalkProfilePage extends Component {
   }
 
   _onCommentPost = evt => {
-    const newComment = {name: "Test", rating: 4, comment: evt} //THE CURRENT SIGNED IN USER
-    const comments = this.state.comments.concat(newComment)
+    const newComment = [{name: "Test", rating: 4, comment: evt}] //THE CURRENT SIGNED IN USER
+    const comments = newComment.concat(this.state.comments) //puts new comment at top
     console.log(this.props)
     this.setState({comments: comments});
 /*
@@ -96,7 +94,6 @@ class WalkProfilePage extends Component {
       <div>
           <aside className = "profile-sidebar">
               <div ref="map" style={style}>
-                This is the Walk Profile Page
                 <WalkCommentInput _onCommentPost={this._onCommentPost} />
                 <WalkCommentList theComments={this.state.comments} />
                 <div className="additional-profile-info">
@@ -112,11 +109,11 @@ class WalkProfilePage extends Component {
                         </div>
                         <MyMapContainer theRoute={this.state.map_coords} />
                         <div className="grid-profile-walk-photos">
-                          <div className="grid-photo-item">photo1</div>
-                          <div className="grid-photo-item">photo2</div>
-                          <div className="grid-photo-item">photo3</div>
-                          <div className="grid-photo-item">photo4</div>
-                          <div className="grid-photo-item">photo5</div>
+                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
+                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
+                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
+                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
+                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
                         </div>
                   </div>
                 </div>

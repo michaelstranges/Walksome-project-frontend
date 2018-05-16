@@ -8,6 +8,29 @@
   border-radius: 5px;
 }
 
+.comment-container-input {
+  border: #339CFF 2px solid;
+  background-color: white;
+  height: 120px;
+  width: 260px;
+  margin-top: 10px;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+.comment-post-button {
+  float: right;
+  margin-right: 10px;
+}
+
+.walk-comment-input {
+  margin:10px;
+  width: 236px;
+  height: 60px;
+  max-height: 60px;
+  max-width: 236px
+}
+
 .message-user {
   padding-top: 5px;
   padding-left: 5px;
@@ -65,9 +88,12 @@
 
 .grid-profile-walk-photos{
   display: grid;
-  grid-template-columns: auto auto auto auto auto
+  grid-template-columns: auto auto auto auto auto;
+  height: auto;
 }
 
 .grid-photo-item{
   text-align:center;
+  height: 20px;
+  width: 20px;
 }

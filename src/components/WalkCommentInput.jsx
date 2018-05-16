@@ -11,12 +11,13 @@ class WalkCommentInput extends Component {
 
   render(){
     return(
-      <div className="comment-container">
+      <div className="comment-container-input">
           <textarea
           className="walk-comment-input"
           placeholder="Share your thoughts..."
           onKeyPress={this.onCommentPost}
           />
+          <button className="comment-post-button">POST</button>
       </div>
     )
   }
