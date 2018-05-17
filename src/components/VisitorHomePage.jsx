@@ -29,7 +29,6 @@ class VisitorHomePage extends Component {
         <div className="container">
           <h1 className="masthead-heading mb-0">Go for a stroll...</h1>
           <h2 className="masthead-subheading mb-0">Discover something new!</h2>
-          <a href="#" className="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
         </div>
       </div>
       <div className="bg-circle-1 bg-circle"></div>
@@ -96,6 +95,7 @@ class VisitorHomePage extends Component {
     <footer className="py-5 bg-black">
       <div className="container">
         <p className="m-0 text-center text-white small">Copyright &copy; BragaStranMat 2018</p>
+        <div className="m-0 text-center text-white small">Icons made by <a href="https://www.flaticon.com/authors/zlatko-najdenovski" title="Running shoes">Running shoes</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
       </div>
 
     </footer>

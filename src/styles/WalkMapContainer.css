@@ -1,0 +1,27 @@
+.new-profile-container {
+    margin-right: auto;
+    margin-left: 15px;
+    height:800px;
+}
+
+.profile-walk-map{
+  padding-left: 450px;
+  position: relative;
+  bottom: 810px;
+  width: 1000px;
+
+}
+
+.profile-walk-map-title{
+  font-size: 40pt;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.the-entire-page{
+  height:800px
+}
+
+.the-walk-photos{
+  height:135px
+}

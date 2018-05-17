@@ -2,8 +2,8 @@
   border: #339CFF 2px solid;
   background-color: white;
   height: auto;
-  width: 260px;
-  margin-top: 10px;
+  width: 330px;
+  margin-top: 15px;
   margin-left: 15px;
   border-radius: 5px;
 }
@@ -12,10 +12,11 @@
   border: #339CFF 2px solid;
   background-color: white;
   height: 120px;
-  width: 260px;
+  width: 340px;
   margin-top: 10px;
   margin-left: 15px;
   border-radius: 5px;
+  margin-bottom:15px
 }
 
 .comment-post-button {
@@ -25,17 +26,21 @@
 
 .walk-comment-input {
   margin:10px;
-  width: 236px;
-  height: 60px;
-  max-height: 60px;
-  max-width: 236px
+  width: 315px;
+  height: 65px;
+  max-height: 65px;
+  max-width: 315px;
+  font-size: 16pt;
 }
 
 .message-user {
   padding-top: 5px;
   padding-left: 5px;
-  background-color: #339CFF;
   width: 255px;
+  font-weight: bold;
+  font-size: 13pt;
+  border-bottom: lightblue 1px solid;
+  margin-left: 10px
 }
 
 .message-content {
@@ -44,23 +49,32 @@
   margin-right: 2px;
   margin-left: 2px;
   margin-bottom: 6px;
+  font-size: 15pt;
 }
 
 .profile-sidebar {
   background-color: lavender;
-  border-top-right-radius: 10px;
-  border: #339CFF 2px solid;
-  width: 300px;
+  border-radius: 10px;
+  width: 375px;
+  height: 700px;
+  overflow: auto;
+}
+
+.profile-input-sidebar {
+  background-color: #bdbdff;
+  border-radius: 10px;
+  width: 375px;
   height: 800px;
+  padding-top: 5px;
+  margin-top: 10px;
 }
 
 .profile-info {
-  position: fixed;
-  left:400px;
-  bottom:250px;
-  width: 700px;
-  border: #339CFF 2px solid;
+  position: relative;
+  bottom:800px;
+  width: 1000px;
   border-radius: 5px;
+  margin-left: 450px;
 }
 
 .profile-walk-name {
@@ -70,20 +84,16 @@
 }
 
 .profile-walk-description{
-  height:30px;
-  padding-top:5px;
-  padding-left:5px;
+  height:auto;
+  padding:20px;
+  font-size: 18pt;
+  font-weight:lighter;
 }
 
 .profile-walk-time{
   height:30px;
   padding-top:5px;
   padding-left:5px;
-}
-
-.container-map{
-  border-top: #339CFF 2px solid;
-  border-bottom: #339CFF 2px solid;
 }
 
 .grid-profile-walk-photos{

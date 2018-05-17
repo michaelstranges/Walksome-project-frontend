@@ -23,6 +23,8 @@ const WalkMapContainer = compose(
 
       console.log("theNewRoute ==>", this.props.theNewRoute[0] )
 
+
+
       DirectionsService.route({
         origin: new google.maps.LatLng(this.props.theNewRoute[0].start.lat, this.props.theNewRoute[0].start.lng), //CHANGE
         destination: new google.maps.LatLng(this.props.theNewRoute[0].end.lat, this.props.theNewRoute[0].end.lng), //CHANGE
@@ -49,9 +51,12 @@ const WalkMapContainer = compose(
     {console.log("props.theNewMarkers ---> ", props.theNewMarkers)}
     {console.log("props.theNewMarkers ---> ", props.theNewMarkers[0].lat)}
 
+    {props.theNewMarkers.map(coords =>
+      {console.log("coords ==>", coords)}
+    )}
 
     <Marker position={{ lat: props.theNewMarkers[0].lat, lng: props.theNewMarkers[0].lng }}></Marker>
-
+    <Marker position={{ lat: props.theNewMarkers[1].lat, lng: props.theNewMarkers[1].lng }}></Marker>
 
     {props.directions && <DirectionsRenderer directions={props.directions} options={{draggable:true}} />}
 
@@ -66,8 +71,6 @@ class MyMapContainer extends Component {
     this.state = {
     }
   }
-
-
 
   componentDidMount(){
     console.log("INNER CDM")
@@ -89,7 +92,6 @@ class MyMapContainer extends Component {
     return(
       <div>
         <WalkMapContainer theNewRoute={this.props.theRoute} theNewMarkers={this.props.theMarkers}/>
-        <button onClick={this.handleMapClick}>Save!!!</button>
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
+import '../styles/WalkMapContainer.css';
 import axios from 'axios';
 
 //map child component
@@ -7,6 +8,7 @@ import MyMapContainer from './WalkMapContainer.jsx'
 import WalkCommentList from './WalkCommentList.jsx'
 import WalkCommentInput from './WalkCommentInput.jsx'
 import logo from '../logo.svg';
+import toronto from '../tinytoronto.jpg';
 
 class WalkProfilePage extends Component {
   constructor(props){
@@ -18,7 +20,7 @@ class WalkProfilePage extends Component {
       walk_time: 4,
       map_coords: [{start: {lat: 43.638229, lng: -79.3797}, end: {lat: 43.638229, lng: -79.3797}}],
       comments: [], //made empty so that I could just concat to an empty array
-      map_markers: [{lat: 43.642263, lng: -79.384241}]
+      map_markers: [{lat: 43.638871, lng: -79.400599}, {lat: 43.641774, lng: -79.386}]
     }
   }
 
@@ -54,7 +56,7 @@ class WalkProfilePage extends Component {
 
       this.setState({
         name: response.data[theSite].name,
-        description: response.data[theSite].description,
+        description: "A great walk from the ACC, taking you by the SkyDome (yes, I call it the SkyDome) the Steamwhistle trainyard, along Bremner with some great parks and sculptures.  Ending off in Fort York",//response.data[theSite].description,
         walk_time: response.data[theSite].walk_time,
         comments: compileComments,
         map_coords: db_map
@@ -71,6 +73,8 @@ class WalkProfilePage extends Component {
     const comments = newComment.concat(this.state.comments) //puts new comment at top
     console.log(this.props)
     this.setState({comments: comments});
+
+
 /*
     const server = axios.create({
        timeout: 10000,
@@ -99,36 +103,42 @@ class WalkProfilePage extends Component {
       width: '200px',
       height: '200px'
   }
+    const divStyle={
+      'font-size': '25pt',
+      'font-weight': 'normal'
+    }
     return (
-      <div>
-          <aside className = "profile-sidebar">
+      <div className="the-entire-page">
+        <div className="new-profile-container">
+          <div className="profile-input-sidebar">
+            <WalkCommentInput _onCommentPost={this._onCommentPost} />
+            <aside className = "profile-sidebar">
               <div ref="map" style={style}>
-                <WalkCommentInput _onCommentPost={this._onCommentPost} />
                 <WalkCommentList theComments={this.state.comments} />
-                <div className="additional-profile-info">
-                  <div className = "profile-info">
-                    <div className="profile-walk-name">
-                      WALK NAME: {this.state.name}
-                    </div>
-                      <div className="profile-walk-description">
-                        DESCRIPTION: {this.state.description}
-                      </div>
-                        <div className="profile-walk-time">
-                          TIME: {this.state.walk_time}
-                        </div>
-                        <MyMapContainer theRoute={this.state.map_coords} theMarkers={this.state.map_markers} />
-                        <div className="grid-profile-walk-photos">
-                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
-                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
-                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
-                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
-                          <div className="grid-photo-item"><img src={logo} className="Nav-logo" alt="logo" /></div>
-                        </div>
-                  </div>
-                </div>
-                Below
-             </div>
-          </aside>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <div className="profile-walk-map">
+          <div className="profile-walk-map-secondtitle">
+            <div className="profile-walk-map-title">
+              {this.state.name} <span style={divStyle}>{this.state.walk_time} min</span>
+            </div>
+          </div>
+          <MyMapContainer theRoute={this.state.map_coords} theMarkers={this.state.map_markers} />
+        </div>
+        <div className = "profile-info">
+          <div className="profile-walk-description">
+            {this.state.description}
+          </div>
+          <div className="grid-profile-walk-photos">
+            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
+          </div>
+        </div>
       </div>
     );
   }
