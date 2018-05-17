@@ -29,6 +29,8 @@ class WalkProfilePage extends Component {
         {lat: 43.641774, lng: -79.386},
         {lat: 43.642905 ,lng: -79.371948},
         {lat: 43.643471 ,lng: -79.367719},
+        {lat: 43.642308 ,lng: -79.463173},
+        {lat: 43.648348 ,lng: -79.467701},
         {lat: 43.638648 ,lng: -79.387847},
         {lat: 43.639020 ,lng: -79.380053}
       ]
@@ -38,6 +40,7 @@ class WalkProfilePage extends Component {
 
   componentDidMount(){
     const theSite = this.state.site_id //establishes the curent site
+
     axios.get(`http://localhost:8080/routes/api/${this.state.site_id}`)
     .then(function(response){
       const stateMapCoords = this.state.map_coords;
@@ -52,7 +55,7 @@ class WalkProfilePage extends Component {
 
       this.setState({
         name: response.data[theSite].name,
-        description: "A great walk through the city.  Along the way you pass the ACC, the SkyDome (which is it's real name), harbourfront center and down to sugar beach",//response.data[theSite].description,
+        description: response.data[theSite].description,
         walk_time: response.data[theSite].walk_time,
         map_coords: db_map
       })

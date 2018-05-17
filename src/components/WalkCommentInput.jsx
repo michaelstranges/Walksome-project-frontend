@@ -24,7 +24,6 @@ class WalkCommentInput extends Component {
           placeholder="Share your thoughts..."
           onKeyPress={this.onCommentPost}
           />
-          <button className="comment-post-button">POST</button>
       </div>
     )
   }
