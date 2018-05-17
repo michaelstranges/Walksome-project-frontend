@@ -20,7 +20,8 @@ class UserProfilePage extends Component {
 
     return (
       <div>
-        <aside className = "profile-sidebar">
+        <aside className = "new-profile-container">
+          <div className="profile-input-sidebar">
             <div className="user-profile-info">
               <div>The User Profile Page</div>
               <img src={logo} className="user-profile-pic" alt="logo" />
@@ -32,6 +33,7 @@ class UserProfilePage extends Component {
                 </div>
               </div>
            </div>
+         </div>
         </aside>
       </div>
     )

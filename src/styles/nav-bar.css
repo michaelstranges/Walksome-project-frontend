@@ -19,3 +19,19 @@
   font-weight: bold;
   color: white;
 }
+
+.all-nav-bar-links{
+  float: left;
+  margin-left: 190px;
+  margin-top: -26px;
+}
+.all-nav-bar-links a{
+  margin-left:10px;
+  text-decoration: none;
+  color: white;
+  background-color: #136c98;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 14pt;
+}

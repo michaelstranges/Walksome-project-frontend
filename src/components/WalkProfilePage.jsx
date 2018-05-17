@@ -24,7 +24,14 @@ class WalkProfilePage extends Component {
       walk_time: 4,
       map_coords: [{start: {lat: 43.638229, lng: -79.3797}, end: {lat: 43.638229, lng: -79.3797}}],
       comments: [], //made empty so that I could just concat to an empty array
-      map_markers: [{lat: 43.638871, lng: -79.400599}, {lat: 43.641774, lng: -79.386}]
+      map_markers: [
+        {lat: 43.638871, lng: -79.400599},
+        {lat: 43.641774, lng: -79.386},
+        {lat: 43.642905 ,lng: -79.371948},
+        {lat: 43.643471 ,lng: -79.367719},
+        {lat: 43.638648 ,lng: -79.387847},
+        {lat: 43.639020 ,lng: -79.380053}
+      ]
     }
   }
 
@@ -33,39 +40,50 @@ class WalkProfilePage extends Component {
     const theSite = this.state.site_id //establishes the curent site
     axios.get(`http://localhost:8080/routes/api/${this.state.site_id}`)
     .then(function(response){
-      const stateComments = this.state.comments;
       const stateMapCoords = this.state.map_coords;
-      const comments_db = response.data[theSite].comments //cleaning up code
-      const dbPackage = [];  //need a blank array to build my comments
-//GET COMMENTS
-      for (const content in comments_db) {
-        //get the commenter name from the db response
-        let commenter_name = Object.keys(comments_db[content])
-        //get the comment from the db response using the commenter name
-        let commenter_comment = comments_db[content][commenter_name]
-        //puts the comment into the correct formate
-        let commentInDb = {name: commenter_name[0], rating: null, comment: commenter_comment[0] }
-        //builds the database comment package
-        dbPackage.push(commentInDb)
-      }
       //compiles the comment package, concatenating the built package to the current state pack
-      const compileComments = stateComments.concat(dbPackage)
 //GET MAPS
       const db_map = [
         {start: {lat: response.data[theSite].starts[0], lng: response.data[theSite].starts[1]},
         end: {lat: response.data[theSite].ends[0], lng: response.data[theSite].ends[1]}}
       ]
 
-      console.log(db_map)
+
 
       this.setState({
         name: response.data[theSite].name,
         description: "A great walk through the city.  Along the way you pass the ACC, the SkyDome (which is it's real name), harbourfront center and down to sugar beach",//response.data[theSite].description,
         walk_time: response.data[theSite].walk_time,
-        comments: compileComments,
         map_coords: db_map
       })
 
+    }.bind(this))
+    .catch(function(error){
+      console.log("GET ERROR ==>", error);
+    })
+      axios.get(`http://localhost:8080/routes/api/${this.state.site_id}/comments`)
+      .then(function(response){
+        console.log("THIS NEW===>",response)
+        const stateComments = this.state.comments;
+        const comments_db = response.data //cleaning up code
+        const dbPackage = [];  //need a blank array to build my comments
+        //GET COMMENTS
+        for (const content of comments_db) {
+
+          let commentInDb = {name: content.user_name, rating: null, comment: content.comment }
+
+          dbPackage.push(commentInDb)
+
+        }
+
+        console.log("dbPackage", dbPackage)
+
+
+        const compileComments = stateComments.concat(dbPackage)
+        console.log("compileComments", compileComments)
+      this.setState({
+        comments: compileComments
+      })
     }.bind(this))
     .catch(function(error){
       console.log("GET ERROR ==>", error);
@@ -75,7 +93,7 @@ class WalkProfilePage extends Component {
   _onCommentPost = evt => {
     const newComment = [{name: "Michael", rating: 4, comment: evt}] //THE CURRENT SIGNED IN USER
     const comments = newComment.concat(this.state.comments) //puts new comment at top
-    console.log(this.props)
+
     this.setState({comments: comments});
 
 

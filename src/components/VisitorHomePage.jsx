@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/VisitorHomePage.css';
+import '../styles/WalkMapContainer.css';
 
 class VisitorHomePage extends Component {
   render(){
@@ -14,10 +15,10 @@ class VisitorHomePage extends Component {
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#">Sign Up</a>
+
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Log In</a>
+
             </li>
           </ul>
         </div>
@@ -29,6 +30,7 @@ class VisitorHomePage extends Component {
         <div className="container">
           <h1 className="masthead-heading mb-0">Go for a stroll...</h1>
           <h2 className="masthead-subheading mb-0">Discover something new!</h2>
+          <a href="http://localhost:3000/walk/1" class="btn btn-primary btn-xl rounded-pill mt-5">GO!</a>
         </div>
       </div>
       <div className="bg-circle-1 bg-circle"></div>

@@ -57,6 +57,10 @@ const WalkMapContainer = compose(
 
     <Marker position={{ lat: props.theNewMarkers[0].lat, lng: props.theNewMarkers[0].lng }}></Marker>
     <Marker position={{ lat: props.theNewMarkers[1].lat, lng: props.theNewMarkers[1].lng }}></Marker>
+    <Marker position={{ lat: props.theNewMarkers[2].lat, lng: props.theNewMarkers[2].lng }}></Marker>
+    <Marker position={{ lat: props.theNewMarkers[3].lat, lng: props.theNewMarkers[3].lng }}></Marker>
+    <Marker position={{ lat: props.theNewMarkers[4].lat, lng: props.theNewMarkers[4].lng }}></Marker>
+    <Marker position={{ lat: props.theNewMarkers[5].lat, lng: props.theNewMarkers[5].lng }}></Marker>
 
     {props.directions && <DirectionsRenderer directions={props.directions} options={{draggable:true}} />}
 
