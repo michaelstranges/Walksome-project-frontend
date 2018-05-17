@@ -11,8 +11,7 @@ class WalkCommentInput extends Component {
   onCommentPost = (evt) => {
     if(evt.key === "Enter"){
       this.props._onCommentPost(evt.target.value)
-      evt.target.value =""
-
+      evt.target.value = this.state.clearBox
     }
   }
 

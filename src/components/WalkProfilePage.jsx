@@ -8,7 +8,11 @@ import MyMapContainer from './WalkMapContainer.jsx'
 import WalkCommentList from './WalkCommentList.jsx'
 import WalkCommentInput from './WalkCommentInput.jsx'
 import logo from '../logo.svg';
-import toronto from '../tinytoronto.jpg';
+import toronto1 from '../toronto1.jpg';
+import toronto2 from '../toronto2.jpg';
+import toronto3 from '../toronto3.jpg';
+import toronto4 from '../toronto4.jpg';
+import toronto5 from '../toronto5.jpg';
 
 class WalkProfilePage extends Component {
   constructor(props){
@@ -56,7 +60,7 @@ class WalkProfilePage extends Component {
 
       this.setState({
         name: response.data[theSite].name,
-        description: "A great walk from the ACC, taking you by the SkyDome (yes, I call it the SkyDome) the Steamwhistle trainyard, along Bremner with some great parks and sculptures.  Ending off in Fort York",//response.data[theSite].description,
+        description: "A great walk through the city.  Along the way you pass the ACC, the SkyDome (which is it's real name), harbourfront center and down to sugar beach",//response.data[theSite].description,
         walk_time: response.data[theSite].walk_time,
         comments: compileComments,
         map_coords: db_map
@@ -69,7 +73,7 @@ class WalkProfilePage extends Component {
   }
 
   _onCommentPost = evt => {
-    const newComment = [{name: "Test", rating: 4, comment: evt}] //THE CURRENT SIGNED IN USER
+    const newComment = [{name: "Michael", rating: 4, comment: evt}] //THE CURRENT SIGNED IN USER
     const comments = newComment.concat(this.state.comments) //puts new comment at top
     console.log(this.props)
     this.setState({comments: comments});
@@ -132,11 +136,11 @@ class WalkProfilePage extends Component {
             {this.state.description}
           </div>
           <div className="grid-profile-walk-photos">
-            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
-            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
-            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
-            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
-            <div className="grid-photo-item"><img src={toronto} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto1} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto2} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto3} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto4} className="the-walk-photos" alt="logo" /></div>
+            <div className="grid-photo-item"><img src={toronto5} className="the-walk-photos" alt="logo" /></div>
           </div>
         </div>
       </div>
