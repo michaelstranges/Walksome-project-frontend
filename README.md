@@ -1,7 +1,10 @@
 # "WALKSOME" - Final Project (Lighthouse Labs Web Development Bootcamp)
 ### Main Contributors:
 
-Mateus Braga - Bragamat
+A joint operation between:
+
+Michael Stranges - GitHub: https://github.com/michaelstranges
+Mateus Braga - GitHub: https://github.com/bragamat
 
 ## Overview
 
@@ -9,12 +12,15 @@ A path sharing app, built for locals and tourists to find paths through the city
 
 ## Final Product
 
-!["Screenshot of URLs page"]()
-!["Screenshot of URLs page"]()
+Screenshot of the Homepage:
+!["Screenshot of URLs page"](https://github.com/michaelstranges/final-project-frontend/blob/master/public/ReadMe%20Photos/WalksomeHome.png)
+
+Screenshot of a path profile:
+!["Screenshot of URLs page"](https://github.com/michaelstranges/final-project-frontend/blob/master/public/ReadMe%20Photos/WalksomeHome.png)
 
 ## Getting Started
 
-backend
+BACK-END
 
 You will need the backend files from this link here:
 https://github.com/michaelstranges/final-project-backend
@@ -30,7 +36,7 @@ Setting up the database (DB) using PostgreSQL
 7. Run seeds - knex seed:run
 8. Start Server (will be on Port 8080) - node server.js
 
-FRONT END
+FRONT-END
 
 1. Run npm install to download all packages
 2. Once installed, use npm start to begin the app.
@@ -55,5 +61,6 @@ FRONT END
 - Implement path rating
 
 ## Contact the Contributors
-Michael Stranges & Mateus Braga
-*Last updated May 23, 2018*
+Michael Stranges - strangesm@gmail.com
+& Mateus Braga
+*Last updated May 24, 2018*
