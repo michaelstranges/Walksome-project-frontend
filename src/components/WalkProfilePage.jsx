@@ -7,7 +7,6 @@ import axios from 'axios';
 import MyMapContainer from './WalkMapContainer.jsx'
 import WalkCommentList from './WalkCommentList.jsx'
 import WalkCommentInput from './WalkCommentInput.jsx'
-import logo from '../logo.svg';
 import toronto1 from '../toronto1.jpg';
 import toronto2 from '../toronto2.jpg';
 import toronto3 from '../toronto3.jpg';
@@ -43,7 +42,6 @@ class WalkProfilePage extends Component {
 
     axios.get(`http://localhost:8080/routes/api/${this.state.site_id}`)
     .then(function(response){
-      const stateMapCoords = this.state.map_coords;
       //compiles the comment package, concatenating the built package to the current state pack
 //GET MAPS
       const db_map = [

@@ -51,10 +51,6 @@ const WalkMapContainer = compose(
     {console.log("props.theNewMarkers ---> ", props.theNewMarkers)}
     {console.log("props.theNewMarkers ---> ", props.theNewMarkers[0].lat)}
 
-    {props.theNewMarkers.map(coords =>
-      {console.log("coords ==>", coords)}
-    )}
-
     <Marker position={{ lat: props.theNewMarkers[0].lat, lng: props.theNewMarkers[0].lng }}></Marker>
     <Marker position={{ lat: props.theNewMarkers[1].lat, lng: props.theNewMarkers[1].lng }}></Marker>
     <Marker position={{ lat: props.theNewMarkers[2].lat, lng: props.theNewMarkers[2].lng }}></Marker>

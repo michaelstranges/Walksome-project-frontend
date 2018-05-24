@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import axios from 'axios';
 import logo from '../logo.svg';
-import MyMapContainer from './WalkMapContainer.jsx'
 
 class UserProfilePage extends Component {
   constructor(props){
