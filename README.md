@@ -3,8 +3,8 @@
 
 A joint operation between:
 
-Michael Stranges - GitHub: https://github.com/michaelstranges
-Mateus Braga - GitHub: https://github.com/bragamat
+- Michael Stranges - GitHub: https://github.com/michaelstranges
+- Mateus Braga - GitHub: https://github.com/bragamat
 
 ## Overview
 
@@ -16,7 +16,7 @@ Screenshot of the Homepage:
 !["Screenshot of URLs page"](https://github.com/michaelstranges/final-project-frontend/blob/master/public/ReadMe%20Photos/WalksomeHome.png)
 
 Screenshot of a path profile:
-!["Screenshot of URLs page"](https://github.com/michaelstranges/final-project-frontend/blob/master/public/ReadMe%20Photos/WalksomeHome.png)
+!["Screenshot of URLs page"](https://github.com/michaelstranges/final-project-frontend/blob/master/public/ReadMe%20Photos/WalkProfile.png)
 
 ## Getting Started
 
@@ -62,5 +62,5 @@ FRONT-END
 
 ## Contact the Contributors
 Michael Stranges - strangesm@gmail.com
-& Mateus Braga
+
 *Last updated May 24, 2018*
